@@ -1,0 +1,27 @@
+name: Daily Check In Script
+
+on:
+  schedule:
+    - cron: "10 17 * * *" # Adjusted for GMT+8 (12:30 AM GMT+8 is 4:30 PM GMT)
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9" # Replace with the appropriate Python version
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt # Add any other dependencies your script requires
+
+      - name: Run Python script
+        env:
+          LTUID: ${{ secrets.LTUID }}
+          LTOKEN: ${{ secrets.LTOKEN }}
+        run: python3 automate.py # Replace with the name of your Python script

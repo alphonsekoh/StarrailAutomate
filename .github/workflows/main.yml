@@ -2,7 +2,7 @@ name: Daily Check In Script
 
 on:
   schedule:
-    - cron: "10 17 * * *" # Adjusted for GMT+8 (12:30 AM GMT+8 is 4:30 PM GMT)
+    - cron: "*/10 * * * *" # Adjusted for GMT+8 (12:30 AM GMT+8 is 4:30 PM GMT)
 
 jobs:
   run_script:
